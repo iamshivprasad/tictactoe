@@ -30,3 +30,11 @@
 *.exe
 *.out
 *.app
+/.vs/TicTacToe
+/packages/dependencies
+/TicTacToe.Src/x64
+/TicTacToe.Src/Debug
+/packages/conanfile.py
+/x64
+/TicTacToe.Src/TicTacToe.Src.vcxproj.user
+/TicTacToe.Src/TicTacToe.Src.vcxproj.filters
