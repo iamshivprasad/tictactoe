@@ -40,7 +40,7 @@ jobs:
     - name: Restore conan packages 
       working-directory: ./packages/
       # run: nuget restore ${{env.SOLUTION_FILE_PATH}}
-      run: echo "${GITHUB_WORKSPACE}"
+      run: echo ${{env.SOLUTION_FILE_PATH}}
       #run: ./packages/conan_install_release.bat
 
     - name: Build
