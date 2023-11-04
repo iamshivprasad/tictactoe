@@ -12,7 +12,7 @@ from conan import ConanFile
 from conan.tools.microsoft import MSBuildDeps
 
 class TicTacToeRecipe(ConanFile):
-    settings = "os", "compiler", "arch", "build_type", "cppstd"
+    settings = "os", "compiler", "arch", "build_type"
     requires = "sfml/2.6.0", "spdlog/1.12.0"
 
     def generate(self):
