@@ -33,22 +33,20 @@ jobs:
     - name: Add MSBuild to PATH
       uses: microsoft/setup-msbuild@v1.0.2
 
-    - name:  Test
+    #- name:  Test
+    #  working-directory: ${{env.GITHUB_WORKSPACE}}
+    #  run: echo "GITHUB_WORKSPACE is ${{ github.workspace }}"
+
+    - name: Install Conan
+      id: conan
+      uses: turtlebrowser/get-conan@main
+
+    - name: Restore conan packages 
+      working-directory: ${{env.GITHUB_WORKSPACE}}/packages
+      run: ./conan_install_release.bat
+
+    - name: Build
       working-directory: ${{env.GITHUB_WORKSPACE}}
-      run: echo "GITHUB_WORKSPACE is ${{ github.workspace }}"
-
-    #- name: Install Conan
-    #  id: conan
-    #  uses: turtlebrowser/get-conan@main
-
-   # - name: Restore conan packages 
-   #   working-directory: ./packages/
-      # run: nuget restore ${{env.SOLUTION_FILE_PATH}}
-    #  run: echo ${{env.SOLUTION_FILE_PATH}}
-      #run: ./packages/conan_install_release.bat
-
-   # - name: Build
-     # working-directory: ${{env.GITHUB_WORKSPACE}}
-      # Add additional options to the MSBuild command line here (like platform or verbosity level).
-      # See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
-      #run: msbuild /m /p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.SOLUTION_FILE_PATH}} -t:rebuild
+       #Add additional options to the MSBuild command line here (like platform or verbosity level).
+       #See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
+      run: msbuild /m /p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.SOLUTION_FILE_PATH}} -t:rebuild
