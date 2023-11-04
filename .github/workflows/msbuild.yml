@@ -42,7 +42,7 @@ jobs:
       uses: turtlebrowser/get-conan@main
 
     - name: Restore conan packages 
-      working-directory: ${{env.GITHUB_WORKSPACE}}\packages
+      working-directory: ./packages
       run: ./conan_install_release.bat
 
     - name: Build
