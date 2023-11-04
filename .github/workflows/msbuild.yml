@@ -37,10 +37,11 @@ jobs:
       id: conan
       uses: turtlebrowser/get-conan@main
 
-    - name: Restore conan packages
-      working-directory: ${{env.GITHUB_WORKSPACE}}
+    - name: Restore conan packages 
+      working-directory: ./packages/
       # run: nuget restore ${{env.SOLUTION_FILE_PATH}}
-      run: ./packages/conan_install_release.bat
+      run: echo "${GITHUB_WORKSPACE}"
+      #run: ./packages/conan_install_release.bat
 
     - name: Build
       working-directory: ${{env.GITHUB_WORKSPACE}}

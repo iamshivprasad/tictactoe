@@ -8,6 +8,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F20F209A-CB5C-4D7C-AA6D-CB89BE120C1C}"
 	ProjectSection(SolutionItems) = preProject
 		packages\conanfile.py = packages\conanfile.py
+		packages\conan_install_debug.bat = packages\conan_install_debug.bat
+		packages\conan_install_release.bat = packages\conan_install_release.bat
 		.github\workflows\msbuild.yml = .github\workflows\msbuild.yml
 	EndProjectSection
 EndProject
