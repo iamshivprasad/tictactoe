@@ -2,15 +2,35 @@
 //
 
 #include <iostream>
+#include <vector>
 #include <spdlog/spdlog.h>
 
 #include <SFML/Graphics.hpp>
 
+const sf::Vector2f TILE_SIZE{ 100.f, 100.f };
+const sf::Vector2 WINDOW_SIZE{ 300.f, 300.f };
+
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
+    sf::RenderWindow window(sf::VideoMode(WINDOW_SIZE.x, WINDOW_SIZE.y), "SFML works!");
+
+    std::vector<std::vector<sf::RectangleShape>> gameBoard;
+
+    for (auto i = 0; i < 3; ++i)
+    {
+        std::vector<sf::RectangleShape> row;
+        
+        for (auto j = 0; j < 3; ++j)
+        {
+            row.emplace_back(sf::Vector2f(TILE_SIZE.x, TILE_SIZE.y));
+            row.back().setFillColor(sf::Color::Yellow);
+            row.back().setOutlineThickness(2.0f);
+            row.back().setOutlineColor(sf::Color(0, 0, 0));
+            row.back().setPosition(i * TILE_SIZE.x, j * TILE_SIZE.y);
+        }
+
+        gameBoard.push_back(row);
+    }
 
     while (window.isOpen())
     {
@@ -22,7 +42,15 @@ int main()
         }
 
         window.clear();
-        window.draw(shape);
+
+        for (auto const& row : gameBoard)
+        {
+            for (auto const& cell : row)
+            {
+                window.draw(cell);
+            }
+        }
+
         window.display();
     }
 
